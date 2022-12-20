@@ -1,0 +1,539 @@
+paths:
+  /cars/:
+    get:
+      tags: ["Cars"]
+      summary: Retrieve all cars.
+      description: Can be used to populate a cars when prototyping or testing an API.
+      responses:
+        200:
+          description: Returns a list of cars.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  rent_price:
+                    type: float
+                  size:
+                    type: string
+                  image_url:
+                    type: string
+                  deletedAt:
+                    type: date
+                  createdAt:
+                    type: date
+                  updatedAt:
+                    type: date
+                  created:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      role:
+                        type: string
+                      createdAt:
+                        type: date
+                      updatedAt:
+                        type: date
+                  updated:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      role:
+                        type: string
+                      createdAt:
+                        type: date
+                      updatedAt:
+                        type: date
+                  deleted:
+                    type: object
+                    example: null
+                example:
+                  id: 1
+                  name: Toyota
+                  rent_price: 10000000
+                  size: Kecil
+                  image_url: https://..
+                  deletedAt: null
+                  createdAt: 2022-12-06T12:55:30.181Z
+                  updatedAt: 2022-12-06T12:55:30.181Z
+                  created:
+                    id: 1
+                    name: John Doe
+                    email: "johndoe@gmail.com"
+                    password: "12345678"
+                    role: "superadmin"
+                    createdAt: 2022-12-06T12:55:30.181Z
+                    updatedAt: 2022-12-06T12:55:30.181Z
+                  updated:
+                    id: 1
+                    name: John Doe
+                    email: "johndoe@gmail.com"
+                    password: "12345678"
+                    role: "superadmin"
+                    createdAt: 2022-12-06T12:55:30.181Z
+                    updatedAt: 2022-12-06T12:55:30.181Z
+                  deleted: null
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Terjadi kesalahan pada server!
+    post:
+      tags: ["Cars"]
+      summary: Create a new car.
+      description: Can be used to create a new car.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                rent_price:
+                  type: float
+                size:
+                  type: string
+                image_url:
+                  type: string
+              example:
+                name: Toyota
+                rent_price: 10000000
+                size: Kecil
+                image_url: https://..
+      responses:
+        201:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The success message.
+                    example: Data berhasil ditambahkan!
+        400:
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Lengkapi semua kolom terlebih dahulu!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+    delete:
+      tags: ["Cars"]
+      summary: Delete all cars.
+      description: Can be used to delete all cars.
+      responses:
+        200:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The success message.
+                    example: Semua data berhasil dihapus!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+
+  /cars/{id}:
+    get:
+      tags: ["Cars"]
+      summary: Retrieve car.
+      description: Can be used to retrieve a car.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The car's id
+      responses:
+        200:
+          description: Returns of car.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  rent_price:
+                    type: float
+                  size:
+                    type: string
+                  image_url:
+                    type: string
+                  deletedAt:
+                    type: date
+                  createdAt:
+                    type: date
+                  updatedAt:
+                    type: date
+                  created:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      role:
+                        type: string
+                      createdAt:
+                        type: date
+                      updatedAt:
+                        type: date
+                  updated:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                      password:
+                        type: string
+                      role:
+                        type: string
+                      createdAt:
+                        type: date
+                      updatedAt:
+                        type: date
+                  deleted:
+                    type: object
+                example:
+                  example:
+                  id: 1
+                  name: Toyota
+                  rent_price: 10000000
+                  size: Kecil
+                  image_url: https://..
+                  deletedAt: null
+                  createdAt: 2022-12-06T12:55:30.181Z
+                  updatedAt: 2022-12-06T12:55:30.181Z
+                  created:
+                    id: 1
+                    name: John Doe
+                    email: "johndoe@gmail.com"
+                    password: "12345678"
+                    role: "superadmin"
+                    createdAt: 2022-12-06T12:55:30.181Z
+                    updatedAt: 2022-12-06T12:55:30.181Z
+                  updated:
+                    id: 1
+                    name: John Doe
+                    email: "johndoe@gmail.com"
+                    password: "12345678"
+                    role: "superadmin"
+                    createdAt: 2022-12-06T12:55:30.181Z
+                    updatedAt: 2022-12-06T12:55:30.181Z
+                  deleted: null
+        404:
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Data tidak ditemukan!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+    put:
+      tags: ["Cars"]
+      summary: Update car.
+      description: Can be used to update a car.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The car's id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                rent_price:
+                  type: float
+                size:
+                  type: string
+                image_url:
+                  type: string
+              example:
+                name: Toyota
+                rent_price: 10000000
+                size: Kecil
+                image_url: https://..
+      responses:
+        200:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The success message.
+                    example: Data berhasil diubah!
+        404:
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Data tidak ditemukan!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+    delete:
+      tags: ["Cars"]
+      summary: Delete car.
+      description: Can be used to delete a car.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The car's id
+      responses:
+        200:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The success message.
+                    example: Data berhasil dihapus!
+        404:
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Data tidak ditemukan!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+
+  /cars/permanent/{id}:
+    delete:
+      tags: ["Cars"]
+      summary: Delete car permanently.
+      description: Can be used to delete a car permanently.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The car's id
+      responses:
+        200:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The success message.
+                    example: Data berhasil dihapus secara permanen!
+        404:
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Data tidak ditemukan!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!
+
+  /cars/upload:
+    post:
+      tags: ["Cars"]
+      summary: Upload car image.
+      description: Can be used to upload a car image.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: The car's image.
+      responses:
+        200:
+          description: Returns success message.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fieldname:
+                    type: string
+                  originalname:
+                    type: string
+                  encoding:
+                    type: string
+                  mimetype:
+                    type: string
+                  destination:
+                    type: string
+                  filename:
+                    type: string
+                  path:
+                    type: string
+                  size:
+                    type: integer
+                example:
+                  fieldname: image
+                  originalname: image.jpg
+                  encoding: 7bit
+                  mimetype: image/jpeg
+                  destination: uploads/
+                  filename: 1638875500000-image.jpg
+                  path: uploads/1638875500000-image.jpg
+                  size: 123456
+        400:
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Tidak ada file yang dipilih!
+        500:
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message.
+                    example: Terjadi kesalahan pada server!

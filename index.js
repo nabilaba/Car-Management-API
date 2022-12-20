@@ -1,20 +1,33 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const db = require("./models");
 const port = 8000;
-const carsRoute = require("./routes/cars.routes");
-const { seedingCars } = require("./utils/seeding");
+const carsRoute = require("./routes/cars");
+const usersRoute = require("./routes/users");
+const { seedingCars, seedingLogin } = require("./utils/seeding");
+const swaggerUi = require('swagger-ui-express');
 
-db.sequelize.sync();
-
-seedingCars(db.sequelize);
+db.sequelize.sync().then(() => {
+  seedingLogin(db.sequelize);
+  seedingCars(db.sequelize);
+});
 
 app.use(express.json());
+app.use(cors());
 
-app.use("/", express.static("public"));
+// storage
 app.use("/uploads", express.static("uploads"));
-app.use("/cars", carsRoute);
 
+// backend
+app.use("/cars", carsRoute);
+app.use("/users", usersRoute);
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(require('./utils/swaggerOptions').swaggerSpec));
+
+app.use("/", (req, res) => {
+  res.send(`Check out the API documentation at http://localhost:${port}/docs`)
+});
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

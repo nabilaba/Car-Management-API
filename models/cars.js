@@ -11,13 +11,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      cars.belongsTo(models.login, {
+        foreignKey: "createdBy",
+        as: "created",
+      });
+      cars.belongsTo(models.login, {
+        foreignKey: "updatedBy",
+        as: "updated",
+      });
+      cars.belongsTo(models.login, {
+        foreignKey: "deletedBy",
+        as: "deleted",
+      });
     }
   }
   cars.init({
-    name: DataTypes.TEXT,
+    name: DataTypes.STRING,
     rent_price: DataTypes.FLOAT,
-    size: DataTypes.TEXT,
-    image_url: DataTypes.TEXT
+    size: DataTypes.STRING,
+    image_url: DataTypes.STRING,
+    createdBy: DataTypes.INTEGER,
+    updatedBy: DataTypes.INTEGER,
+    deletedBy: DataTypes.INTEGER,
+    deletedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'cars',

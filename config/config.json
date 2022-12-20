@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "nabilaba",
-    "database": "ch5_development",
+    "database": "ch6_development",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "nabilaba",
-    "database": "ch5_test",
+    "database": "ch6_test",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "nabilaba",
-    "database": "ch5_production",
+    "database": "ch6_production",
     "host": "localhost",
     "dialect": "postgres"
   }

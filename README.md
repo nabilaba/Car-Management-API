@@ -1,6 +1,13 @@
-# Preview
-
-![preview](preview.png)
+# Role Akses
+- superadmin
+  - email: superadmin@gmail.com
+  - password: 12345678
+- admin
+  - email: admin@gmail.com
+  - password: 12345678
+- member
+  - email: member@gmail.com
+  - password: 12345678
 
 # Tutorial Clone
 
@@ -9,25 +16,25 @@
 ```javascript
 {
   "development": {
-    "username": "postgres", // username postgres (default: postgres)
-    "password": "nabilaba", // password postgres
-    "database": "ch5_development", // nama database
-    "host": "localhost", // host postgres (default: localhost)
-    "dialect": "postgres" // dialect postgres (default: postgres)
+    "username": "postgres",
+    "password": "nabilaba",
+    "database": "ch6_development",
+    "host": "localhost",
+    "dialect": "postgres"
   },
   "test": {
-    "username": "postgres", // username postgres (default: postgres)
-    "password": "nabilaba", // password postgres
-    "database": "ch5_test", // nama database
-    "host": "localhost", // host postgres (default: localhost)
-    "dialect": "postgres" // dialect postgres (default: postgres)
+    "username": "postgres",
+    "password": "nabilaba",
+    "database": "ch6_test",
+    "host": "localhost",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "postgres", // username postgres (default: postgres)
-    "password": "nabilaba", // password postgres
-    "database": "ch5_production", // nama database
-    "host": "localhost", // host postgres (default: localhost)
-    "dialect": "postgres" // dialect postgres (default: postgres)
+    "username": "postgres",
+    "password": "nabilaba",
+    "database": "ch6_production",
+    "host": "localhost",
+    "dialect": "postgres"
   }
 }
 ```
@@ -36,20 +43,16 @@
 - Konfigrusasi paket yarn dengan perintah `yarn install`.
 - Jalankan perintah `yarn start` untuk menjalankan aplikasi.
 
-# Entity Relationship Diagram
+# Quick Brief
 
-![erd](erd.png)
+1. Menggunakan express dan sequelize, untuk memenuhi kebutuhan CRUD.
+2. Menggunakan bcrypt atau bcryptjs untuk mengenkripsi password user.
+3. Menggunakan passport atau jsonwebtoken, untuk memenuhi kebutuhan Token Based Authentication.
+4. Menggunakan Swagger Editor, Stoplight Studio, atau tools lain dalam menulis Open API Documentation.
+5. Menggunakan Swagger, Redoc, Stoplight Element, atau Tools yang memvisualisasikan Open API documentation lainnya.
+6. Menggunakan seeders untuk menginsert data superadmin.
 
-# Endpoint Rest API
+# Endpoint
 
-- Get All Cars: GET http://localhost:8000/cars
-- Get Car By ID: GET http://localhost:8000/cars/:id
-- Create Car: POST http://localhost:8000/cars
-- Update Car By ID: PUT http://localhost:8000/cars/:id
-- Delete Car By ID: DELETE http://localhost:8000/cars/:id
-- Delete All Cars: DELETE http://localhost:8000/cars
-- Upload Image Car: POST http://localhost:8000/cars/upload
-
-# Contoh Request dan Response
-
-![contoh](contoh.png)
+- Check at [http://localhost:8000/docs](http://localhost:8000/docs)
+  ![swagger](swagger.png)
