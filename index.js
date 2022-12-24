@@ -26,8 +26,9 @@ app.use("/users", usersRoute);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(require('./utils/swaggerOptions').swaggerSpec));
 
 app.use("/", (req, res) => {
-  res.send(`Check out the API documentation at http://localhost:${port}/docs`)
+  res.send(`Check out the API documentation at ${req.protocol}://${req.get("host")}/docs`);
 });
+
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at ${port}`);
 });
