@@ -1,3 +1,4 @@
+require("dotenv").config();
 const login = require("../models").login;
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -52,8 +53,7 @@ exports.login = (req, res) => {
 
 exports.loginGoogle = (req, res) => {
   const { tokenId } = req.body;
-  const clientId =
-    "733104915800-ii8moe3lrcoocsvpa89jhkqj6m970dc7.apps.googleusercontent.com";
+  const clientId = process.env.GOOGLE_CLIENT_ID;
   const client = new OAuth2Client(clientId);
 
   client
